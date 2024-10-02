@@ -21,7 +21,7 @@ export const getChampion = async () => {
       `https://ddragon.leagueoflegends.com/cdn/${newVersion}/data/ko_KR/champion.json`,
       {
         next: {
-          revalidate: 60,
+          revalidate: 5,
         },
       }
     );
@@ -29,15 +29,25 @@ export const getChampion = async () => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    console.log('getChampion => ', error);
+    return;
   }
 };
 
-// 챔피언 상세 정보 가져오기
-export const DetailResponse = async (version: number, id: string) => {
-  const response = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
-  );
-  const data = await response.json();
-  return data;
+// 챔피언 상세 정보 가져오기(SSR)
+export const getDetail = async (id: string) => {
+  const newVersion = await getVersion();
+
+  try {
+    const response = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/${newVersion}/data/ko_KR/champion/${id}.json`
+    );
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log('getDetail => ', error);
+    return;
+  }
 };
