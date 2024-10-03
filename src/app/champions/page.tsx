@@ -11,6 +11,7 @@ const page = async () => {
   // TODO: champion unknown 뜨는 거 수정
   const championList = championArr.map(([key, champion]) => {
     return {
+      key,
       id: champion.id,
       name: champion.name,
       title: champion.title,
