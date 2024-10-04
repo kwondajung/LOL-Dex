@@ -1,4 +1,4 @@
-// 'use server';
+'use server';
 
 // TODO: return 값에 대한 타입 지정
 // 최신 버전 가져오기
@@ -21,7 +21,7 @@ export const getChampion = async () => {
       `https://ddragon.leagueoflegends.com/cdn/${newVersion}/data/ko_KR/champion.json`,
       {
         next: {
-          revalidate: 5,
+          revalidate: 86400,
         },
       }
     );
