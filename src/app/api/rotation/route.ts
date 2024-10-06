@@ -1,24 +1,46 @@
-// 이 파일 자체가 라우트 핸들러(=백엔드 서버)
+// 라우트 핸들러
 
+import { ChampionTable } from '@/types/Champion';
+import { getChampion } from '@/utils/serverApi';
 import { NextResponse } from 'next/server';
 
-const apiKey = process.env.NEXT_PUBLIC_RIOT_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_RIOT_API_KEY as string;
 
-// TODO: 로테이션 챔피언 필터링해서 가져오기
-// TODO: 1. 응답 데이터를 ChampionRotation 타입을 지정해줘라
-// TODO: 2. NextResponse.json()을 사용하여 json 형태로 응답 ?
+export async function GET() {
+  try {
+    const res = await fetch(
+      'https://kr.api.riotgames.com/lol/platform/v3/champion-rotations',
+      {
+        method: 'GET',
+        headers: {
+          'X-Riot-Token': API_KEY,
+        },
+      }
+    );
+    const data = await res.json();
+    const result = data.freeChampionIds;
 
-export async function GET(request: Request) {
-  const res = await fetch(
-    'https://kr.api.riotgames.com/lol/platform/v3/champion-rotations',
-    {
-      headers: {
-        'X-Riot-Token': `${apiKey}`,
-      },
-    }
-  );
-  const data = await res.json(); // data에 타입 지정
-  // console.log('GET /api/rotation');
+    // 챔피언 리스트 가져오기
+    const championData: ChampionTable = await getChampion();
+    const championArr = Object.entries(championData.data);
 
-  return NextResponse.json({ data });
+    const mapChampion = championArr.map(([key, champion]) => {
+      return {
+        key: champion.key,
+        id: champion.id,
+        name: champion.name,
+        title: champion.title,
+        image: champion.image.full,
+      };
+    });
+
+    const filterChampion = mapChampion.filter((champion, index) => {
+      return result.includes(Number(champion.key));
+    });
+
+    console.log('로테이션 필터 => ', filterChampion);
+    return NextResponse.json(filterChampion);
+  } catch (error) {
+    console.log(error);
+  }
 }
