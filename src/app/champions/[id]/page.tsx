@@ -36,6 +36,10 @@ const championDetailPage = () => {
       <p>{championDetail.name}</p>
       <p>{championDetail.title}</p>
       <p>{championDetail.blurb}</p>
+      <p>공격력: {championDetail.info.attack}</p>
+      <p>방어력: {championDetail.info.defense}</p>
+      <p>지력: {championDetail.info.magic}</p>
+      <p>난이도: {championDetail.info.difficulty}</p>
     </div>
   );
 };

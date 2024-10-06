@@ -9,7 +9,6 @@ const page = async () => {
   // 객체 데이터를 배열로 변환
   const championArr = Object.entries(championData.data);
 
-  // TODO: champion unknown 뜨는 거 수정
   const championList = championArr.map(([key, champion]) => {
     return {
       key,
@@ -17,10 +16,9 @@ const page = async () => {
       name: champion.name,
       title: champion.title,
       image: champion.image.full,
+      info: champion.info,
     };
   });
-
-  // console.log(championList);
 
   return (
     <>
