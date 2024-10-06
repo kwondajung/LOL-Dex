@@ -1,9 +1,10 @@
+import { ChampionTable } from '@/types/Champion';
 import { getChampion } from '@/utils/serverApi';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const page = async () => {
-  const championData = await getChampion();
+  const championData: ChampionTable = await getChampion();
 
   // 객체 데이터를 배열로 변환
   const championArr = Object.entries(championData.data);
