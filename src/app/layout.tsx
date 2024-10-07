@@ -15,21 +15,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={'antialiased'}>
-        <div className="text-xl mb-5">
-          <Link href={'/'} className="mr-5">
-            홈
-          </Link>
-          <Link href={'/champions'} className="mr-5">
-            챔피언 목록
-          </Link>
-          <Link href={'/items'} className="mr-5">
-            아이템 목록
-          </Link>
-          <Link href={'/rotation'} className="mr-5">
-            로테이션 정보 페이지
-          </Link>
+        <div className="relative">
+          <div className="text-xl fixed mb-5 top-0 right-0 left-0 bg-slate-500 h-16">
+            <Link href={'/'} className="mr-5">
+              홈
+            </Link>
+            <Link href={'/champions'} className="mr-5">
+              챔피언 목록
+            </Link>
+            <Link href={'/items'} className="mr-5">
+              아이템 목록
+            </Link>
+            <Link href={'/rotation'} className="mr-5">
+              로테이션 정보 페이지
+            </Link>
+          </div>
         </div>
-        {children}
+        <div className="mt-20">{children}</div>
       </body>
     </html>
   );
