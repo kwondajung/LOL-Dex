@@ -101,7 +101,7 @@ const filterChampion: championRotationList[] = mapChampion.filter(
 ## 4. 결과
 
 아래처럼 더 이상 빈배열이 아닌 챔피언들과 비교해서 무료인 챔피언들은 `true`인 결과를 얻었습니다.
-![image](https://github.com/user-attachments/assets/8a2cf147-6f0e-4cda-910d-3d91123dab99)
+![image](https://github.com/user-attachments/assets/8a2cf147-6f0e-4cda-910d-3d91123dab99)  
 그 후 page.tsx 내의 코드에서 `rotationChampion`을 콘솔로 찍었을 때 원하는 값을 얻을 수 있었습니다.
 
 ```js
