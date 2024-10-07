@@ -38,7 +38,6 @@ export async function GET() {
       return result.includes(Number(champion.key));
     });
 
-    console.log('로테이션 필터 => ', filterChampion);
     return NextResponse.json(filterChampion);
   } catch (error) {
     console.log(error);
