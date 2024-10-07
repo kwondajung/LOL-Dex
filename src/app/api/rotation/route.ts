@@ -34,8 +34,9 @@ export async function GET() {
       };
     });
 
-    const filterChampion = mapChampion.filter((champion, index) => {
-      return result.includes(Number(champion.key));
+    const filterChampion = mapChampion.filter((champion) => {
+      const cham = result.includes(Number(champion.key));
+      return cham;
     });
 
     return NextResponse.json(filterChampion);
