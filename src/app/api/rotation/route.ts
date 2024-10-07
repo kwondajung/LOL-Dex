@@ -1,6 +1,7 @@
 // 라우트 핸들러
 
-import { ChampionTable } from '@/types/Champion';
+import { Champion, ChampionTable } from '@/types/Champion';
+import { championRotation, championRotationList } from '@/types/Lotation';
 import { getChampion } from '@/utils/serverApi';
 import { NextResponse } from 'next/server';
 
@@ -17,22 +18,24 @@ export async function GET() {
         },
       }
     );
-    const data = await res.json();
+    const data: championRotation = await res.json();
     const result = data.freeChampionIds;
 
     // 챔피언 리스트 가져오기
     const championData: ChampionTable = await getChampion();
     const championArr = Object.entries(championData.data);
 
-    const mapChampion = championArr.map(([key, champion]) => {
-      return {
-        key: champion.key,
-        id: champion.id,
-        name: champion.name,
-        title: champion.title,
-        image: champion.image.full,
-      };
-    });
+    const mapChampion: championRotationList[] = championArr.map(
+      ([key, champion]) => {
+        return {
+          key: champion.key,
+          id: champion.id,
+          name: champion.name,
+          title: champion.title,
+          image: champion.image.full,
+        };
+      }
+    );
 
     const filterChampion = mapChampion.filter((champion) => {
       const cham = result.includes(Number(champion.key));
