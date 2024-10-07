@@ -20,9 +20,7 @@ const championDetailPage = async ({ params }: Props) => {
   const championId = params.id;
 
   // 챔피언 상세 정보 가져오기
-
   const detail = await getDetail(championId);
-  console.log(detail);
 
   const championData = detail?.data?.[championId];
 
@@ -35,6 +33,7 @@ const championDetailPage = async ({ params }: Props) => {
       <img
         src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_0.jpg`}
         className="w-full brightness-50"
+        key={championData.key}
       />
       <div className="absolute top-1/4 text-white pl-48">
         <p className="text-3xl">{championData.title}</p>
