@@ -1,6 +1,7 @@
 'use client';
 
 import { Champion } from '@/types/Champion';
+import { championRotation } from '@/types/Lotation';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -11,7 +12,7 @@ const Page = () => {
     fetchChampion();
   }, []);
 
-  const fetchChampion = async () => {
+  const fetchChampion = async (): Promise<Champion[]> => {
     const getRotation = await fetch('/api/rotation');
 
     // 응답 상태 확인
@@ -19,7 +20,7 @@ const Page = () => {
       throw new Error(`로테이션 챔피언 불러오기 오류: ${getRotation.status}`);
     }
 
-    const rotationChampion = await getRotation.json();
+    const rotationChampion: Champion[] = await getRotation.json();
     setChampions(rotationChampion);
 
     return rotationChampion;

@@ -1,6 +1,6 @@
 // 라우트 핸들러
 
-import { Champion, ChampionTable } from '@/types/Champion';
+import { ChampionTable } from '@/types/Champion';
 import { championRotation, championRotationList } from '@/types/Lotation';
 import { getChampion } from '@/utils/serverApi';
 import { NextResponse } from 'next/server';
@@ -37,10 +37,12 @@ export async function GET() {
       }
     );
 
-    const filterChampion = mapChampion.filter((champion) => {
-      const cham = result.includes(Number(champion.key));
-      return cham;
-    });
+    const filterChampion: championRotationList[] = mapChampion.filter(
+      (champion) => {
+        const cham = (result ?? []).includes(Number(champion.key));
+        return cham;
+      }
+    );
 
     return NextResponse.json(filterChampion);
   } catch (error) {
