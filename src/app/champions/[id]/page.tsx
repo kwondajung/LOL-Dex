@@ -36,9 +36,13 @@ const championDetailPage = async ({ params }: Props) => {
         key={championData.key}
       />
       <div className="absolute top-1/4 text-white pl-48">
-        <p className="text-3xl">{championData.title}</p>
-        <p className="text-white text-8xl font-bold">{championData.name}</p>
-        <p className="w-[700px]">{championData.blurb}</p>
+        <p className="text-3xl mb-2 font-semibold">{championData.title}</p>
+        <p className="text-white text-8xl font-bold mb-2">
+          {championData.name}
+        </p>
+        <p className="w-[700px] text-justify text-lg mb-2">
+          {championData.blurb}
+        </p>
         <p>공격력: {championData.info.attack}</p>
         <p>방어력: {championData.info.defense}</p>
         <p>지력: {championData.info.magic}</p>

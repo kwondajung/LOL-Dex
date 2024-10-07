@@ -26,7 +26,7 @@ const Page = () => {
   };
 
   return (
-    <div className="mx-40">
+    <div className="mx-40 mt-20">
       <h1 className="text-2xl font-bold text-center mb-5">
         로테이션 정보 페이지
       </h1>

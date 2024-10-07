@@ -16,7 +16,7 @@ const page = async () => {
   });
 
   return (
-    <div className="mx-40">
+    <div className="mx-40 mt-20">
       <h1 className="text-2xl font-bold text-center mb-5">아이템 목록</h1>
       <div className="grid grid-cols-6 gap-4">
         {ItemList.map((item, index) => (

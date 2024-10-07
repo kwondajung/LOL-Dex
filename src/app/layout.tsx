@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={'antialiased'}>
         <div className="relative">
-          <div className="text-xl fixed mb-5 top-0 right-0 left-0 bg-slate-500 h-16">
+          <div className="text-xl fixed top-0 right-0 left-0 bg-slate-950 h-16 flex justify-around p-4 text-white">
             <Link href={'/'} className="mr-5">
               홈
             </Link>
@@ -31,7 +31,7 @@ export default function RootLayout({
             </Link>
           </div>
         </div>
-        <div className="mt-20">{children}</div>
+        <div className="mt-16">{children}</div>
       </body>
     </html>
   );
