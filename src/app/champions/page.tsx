@@ -21,19 +21,19 @@ const page = async () => {
   });
 
   return (
-    <>
+    <div className="mx-40">
       <h1 className="text-2xl font-bold text-center mb-5">챔피언 목록</h1>
       <div className="grid grid-cols-6 gap-4">
         {championList.map((champion, index) => (
           <Link href={`/champions/${champion.id}`}>
             <div
               key={index}
-              className="grid place-items-center border text-center p-5"
+              className="grid place-items-center border text-center"
             >
               <Image
                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`}
                 alt={champion.name}
-                width={200}
+                width={300}
                 height={100}
               />
               <p>{champion.name}</p>
@@ -42,7 +42,7 @@ const page = async () => {
           </Link>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

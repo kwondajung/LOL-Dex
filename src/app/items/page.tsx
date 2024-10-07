@@ -1,8 +1,9 @@
+import { ItemTable } from '@/types/Item';
 import { getItem } from '@/utils/serverApi';
 import Image from 'next/image';
 
 const page = async () => {
-  const ItemData = await getItem();
+  const ItemData: ItemTable = await getItem();
 
   const itemArr = Object.entries(ItemData.data);
 
@@ -15,7 +16,7 @@ const page = async () => {
   });
 
   return (
-    <>
+    <div className="mx-40">
       <h1 className="text-2xl font-bold text-center mb-5">아이템 목록</h1>
       <div className="grid grid-cols-6 gap-4">
         {ItemList.map((item, index) => (
@@ -34,7 +35,7 @@ const page = async () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
